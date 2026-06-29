@@ -221,6 +221,21 @@
   }
 
   .toast.show { transform: translateX(-50%) translateY(0); }
+
+  .footer-cta {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background: var(--pink-soft);
+    color: var(--pink);
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 15px 24px;
+    border-top: 1px solid var(--pink-light);
+    line-height: 1.45;
+    transition: background 0.2s;
+  }
+  .footer-cta:active { background: var(--pink-light); }
 </style>
 </head>
 <body>
@@ -295,6 +310,7 @@
     </div>
 
     <p class="footer-note" id="t-footer"></p>
+    <a class="footer-cta" id="t-footerCta" href="https://taniad2169.github.io/Brazil-Campaign/" target="_blank" rel="noopener"></a>
   </div>
 
   <div class="toast" id="toast"></div>
@@ -305,7 +321,8 @@
     //  Full international format, no + or spaces
     //  Example: 14158770687 (US) / 5521999999999 (Brazil)
     // ============================================
-    const WHATSAPP_NUMBER = "0000000000";  // <-- PLACEHOLDER: put your number here
+    const WHATSAPP_NUMBER = "5521983272863";  // +55 21 98327 2863
+    const SHARE_LINK = "https://taniad2169.github.io/Val-Beauty/";
 
     // Canonical service keys (the <option> value) mapped to each language
     const SERVICES = {
@@ -342,6 +359,7 @@
         btnShare: "Copiar e Compartilhar",
         btnInstall: "Adicionar a Tela Inicial",
         footer: "Ao enviar, seus dados abrem no WhatsApp para confirmarmos seu agendamento.",
+        footerCta: "\uD83D\uDCB8 E dono de um negocio? Clique aqui e tenha seu proprio aplicativo de celular que gera dinheiro!",
         fillAll: "Por favor, preencha todos os campos \uD83D\uDC97",
         copied: "Link copiado! \uD83D\uDC97",
         copyFail: "Nao foi possivel copiar \u2014 copie manualmente",
@@ -365,6 +383,7 @@
         btnShare: "Copy & Share",
         btnInstall: "Add to Home Screen",
         footer: "By submitting, your details open in WhatsApp so we can confirm your booking.",
+        footerCta: "\uD83D\uDCB8 Are you a business owner? Click here to get your own money-making phone app!",
         fillAll: "Please fill in all fields \uD83D\uDC97",
         copied: "Link copied! \uD83D\uDC97",
         copyFail: "Couldn't copy \u2014 please copy manually",
@@ -388,6 +407,7 @@
         btnShare: "Copiar y Compartir",
         btnInstall: "Anadir a Pantalla de Inicio",
         footer: "Al enviar, tus datos se abren en WhatsApp para confirmar tu reserva.",
+        footerCta: "\uD83D\uDCB8 Tienes un negocio? Haz clic aqui y obten tu propia app de celular que genera dinero!",
         fillAll: "Por favor, completa todos los campos \uD83D\uDC97",
         copied: "Enlace copiado! \uD83D\uDC97",
         copyFail: "No se pudo copiar \u2014 copialo manualmente",
@@ -419,6 +439,7 @@
       document.getElementById("t-btnShare").textContent = d.btnShare;
       document.getElementById("t-btnInstall").textContent = d.btnInstall;
       document.getElementById("t-footer").textContent = d.footer;
+      document.getElementById("t-footerCta").textContent = d.footerCta;
 
       // translate each service option's visible text (value stays canonical)
       const opts = document.querySelectorAll('#service option[value]:not([value=""])');
@@ -460,7 +481,7 @@
 
     function shareLink() {
       const d = T[currentLang];
-      const link = window.location.href;
+      const link = SHARE_LINK;
       if (navigator.share) {
         navigator.share({ title: d.title, text: d.shareText, url: link }).catch(function(){});
       } else {
