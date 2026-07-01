@@ -312,35 +312,36 @@
   }
 
   .side-overlay {
+    display: none;
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(0,0,0,0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.35s ease;
     z-index: 1000;
   }
 
   .side-overlay.open {
-    opacity: 1;
-    visibility: visible;
+    display: block;
   }
 
   .side-panel {
+    display: none;
     position: fixed;
     top: 0;
+    left: 0;
     right: 0;
-    height: 100%;
+    bottom: 0;
     width: 100%;
+    height: 100%;
     background: var(--white);
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 1001;
     overflow-y: auto;
   }
 
   .side-panel.open {
-    transform: translateX(0);
+    display: block;
   }
 
   .side-panel-header {
